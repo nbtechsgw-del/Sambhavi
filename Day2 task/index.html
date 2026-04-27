@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TripNest Mobile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <div class="phone-frame">
+      <header class="app-header">
+        <div class="status-row">
+          <span>9:41</span>
+          <span>TripNest</span>
+          <span>92%</span>
+        </div>
+
+        <div class="top-row">
+          <div>
+            <p class="welcome-text">Tourism mobile app</p>
+            <h1>Plan stays, routes, and reviews in one place</h1>
+          </div>
+          <div class="profile-chip">TN</div>
+        </div>
+
+        <div class="search-card">
+          <label for="searchInput">Search places or cities</label>
+          <input id="searchInput" type="text" placeholder="Goa, Jaipur, mountains...">
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-card-copy">
+            <p class="mini-label">Featured experience</p>
+            <h2>Weekend in Jaipur</h2>
+            <span>Discover tourist spots, compare hotels, open maps, and check real traveler reviews.</span>
+          </div>
+          <a class="hero-button" href="#spots">Start trip</a>
+        </div>
+
+        <div class="quick-stats">
+          <article class="quick-stat">
+            <strong>24+</strong>
+            <span>Destinations</span>
+          </article>
+          <article class="quick-stat">
+            <strong>120+</strong>
+            <span>Hotels</span>
+          </article>
+          <article class="quick-stat">
+            <strong>4.8</strong>
+            <span>User rating</span>
+          </article>
+        </div>
+      </header>
+
+      <main class="app-content">
+        <section id="screen-explore" class="screen-panel active" data-screen="explore">
+          <section class="app-section planner-section">
+            <div class="section-head">
+              <div>
+                <p class="mini-label">Trip planner</p>
+                <h2>Build your day faster</h2>
+              </div>
+            </div>
+
+            <div class="planner-grid">
+              <article class="planner-card">
+                <span class="planner-step">01</span>
+                <h3>Choose a destination</h3>
+                <p>Browse popular tourist spots by beach, heritage, nature, or city experience.</p>
+              </article>
+              <article class="planner-card">
+                <span class="planner-step">02</span>
+                <h3>Book your stay</h3>
+                <p>Compare hotel ratings, prices, and location details before confirming.</p>
+              </article>
+              <article class="planner-card">
+                <span class="planner-step">03</span>
+                <h3>Navigate with maps</h3>
+                <p>Preview routes and location pins directly inside the app layout.</p>
+              </article>
+            </div>
+          </section>
+
+          <section id="spots" class="app-section">
+            <div class="section-head">
+              <div>
+                <p class="mini-label">Tourist spots</p>
+                <h2>Popular destinations</h2>
+              </div>
+            </div>
+
+            <div class="filter-strip">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="beach">Beach</button>
+              <button class="filter-btn" data-filter="heritage">Heritage</button>
+              <button class="filter-btn" data-filter="nature">Nature</button>
+              <button class="filter-btn" data-filter="city">City</button>
+            </div>
+
+            <div id="spotsGrid" class="spots-list"></div>
+          </section>
+        </section>
+
+        <section id="screen-hotels" class="screen-panel" data-screen="hotels">
+          <section id="stays" class="app-section">
+            <div class="section-head">
+              <div>
+                <p class="mini-label">Hotel booking</p>
+                <h2>Recommended stays</h2>
+              </div>
+            </div>
+            <div id="hotelsGrid" class="hotels-list"></div>
+          </section>
+
+          <section class="app-section booking-section">
+            <div class="section-head">
+              <div>
+                <p class="mini-label">Booking summary</p>
+                <h2>Reserve your room</h2>
+              </div>
+            </div>
+
+            <div class="booking-card">
+              <div class="booking-row">
+                <span>Selected hotel</span>
+                <strong id="selectedHotelName">Azure Coast Resort</strong>
+              </div>
+              <div class="booking-row">
+                <span>Destination</span>
+                <strong id="selectedDestinationName">Goa Beaches</strong>
+              </div>
+              <div class="booking-row">
+                <span>Stay</span>
+                <strong>2 nights</strong>
+              </div>
+              <div class="booking-row">
+                <span>Price</span>
+                <strong id="selectedHotelPrice">Rs 6,500 / night</strong>
+              </div>
+              <button id="confirmBookingBtn" class="book-btn" type="button">Confirm booking</button>
+              <p id="bookingStatus" class="booking-status">Select a hotel card and confirm your booking.</p>
+            </div>
+          </section>
+        </section>
+
+        <section id="screen-maps" class="screen-panel" data-screen="maps">
+          <section id="maps" class="app-section">
+            <div class="section-head">
+              <div>
+                <p class="mini-label">Maps</p>
+                <h2>Location preview</h2>
+              </div>
+            </div>
+
+            <div class="map-card">
+              <label for="mapSelect">Select destination</label>
+              <select id="mapSelect"></select>
+              <p id="mapCaption"></p>
+              <div class="map-frame-wrap">
+                <iframe
+                  id="mapFrame"
+                  title="Destination map"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  allowfullscreen>
+                </iframe>
+              </div>
+            </div>
+          </section>
+
+          <section class="app-section route-section">
+            <div class="section-head">
+              <div>
+                <p class="mini-label">Navigation flow</p>
+                <h2>In-app route details</h2>
+              </div>
+            </div>
+            <div id="routeList" class="route-list"></div>
+          </section>
+        </section>
+
+        <section id="screen-reviews" class="screen-panel" data-screen="reviews">
+          <section id="reviews" class="app-section">
+            <div class="section-head">
+              <div>
+                <p class="mini-label">User reviews</p>
+                <h2>Traveler feedback</h2>
+              </div>
+            </div>
+
+            <div class="review-summary">
+              <div class="summary-card">
+                <strong id="averageRating">4.8</strong>
+                <span>Avg rating</span>
+              </div>
+              <div class="summary-card">
+                <strong id="reviewCount">0</strong>
+                <span>Reviews</span>
+              </div>
+            </div>
+
+            <div id="reviewsList" class="reviews-list"></div>
+          </section>
+
+          <section class="app-section cta-section">
+            <div class="cta-copy">
+              <p class="mini-label">Mobile booking flow</p>
+              <h2>Everything a travel app needs</h2>
+              <p>Tourist information, hotel booking, maps, and user reviews are combined in a mobile-first interface for fast trip planning.</p>
+            </div>
+            <button id="reviewActionBtn" class="cta-button" type="button">Go to hotels</button>
+          </section>
+        </section>
+      </main>
+
+      <nav class="bottom-nav">
+        <button class="nav-item active" type="button" data-screen-target="explore">
+          <span class="nav-icon">EX</span>
+          <span>Explore</span>
+        </button>
+        <button class="nav-item" type="button" data-screen-target="hotels">
+          <span class="nav-icon">HT</span>
+          <span>Hotels</span>
+        </button>
+        <button class="nav-item" type="button" data-screen-target="maps">
+          <span class="nav-icon">MP</span>
+          <span>Maps</span>
+        </button>
+        <button class="nav-item" type="button" data-screen-target="reviews">
+          <span class="nav-icon">RV</span>
+          <span>Reviews</span>
+        </button>
+      </nav>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

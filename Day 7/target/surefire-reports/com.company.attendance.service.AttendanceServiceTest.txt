@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.company.attendance.service.AttendanceServiceTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.756 s -- in com.company.attendance.service.AttendanceServiceTest

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Listing Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg site-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-semibold" href="#">ShopGrid</a>
+      <span class="navbar-text d-none d-md-inline">Featured deals for your next upgrade</span>
+    </div>
+  </nav>
+
+  <header class="hero-section">
+    <div class="container">
+      <div class="hero-copy">
+        <p class="eyebrow mb-2">Spring Collection</p>
+        <h1 class="display-5 fw-bold">Responsive Product Listing</h1>
+        <p class="lead mb-0">A clean Bootstrap storefront with product cards, hover states, ratings, badges, and UI-only cart actions.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="pb-5">
+    <section class="container">
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-lg-3">
+          <article class="card product-card h-100 border-0">
+            <span class="badge text-bg-danger product-badge">18% OFF</span>
+            <img class="card-img-top product-image" alt="Wireless headphones" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='420' viewBox='0 0 640 420'%3E%3Crect width='640' height='420' fill='%23f4d7d0'/%3E%3Ccircle cx='220' cy='220' r='72' fill='%232d2a32'/%3E%3Ccircle cx='420' cy='220' r='72' fill='%232d2a32'/%3E%3Crect x='220' y='132' width='200' height='26' rx='13' fill='%232d2a32'/%3E%3Crect x='268' y='176' width='104' height='110' rx='24' fill='%23ffffff' opacity='.26'/%3E%3C/svg%3E">
+            <div class="card-body d-flex flex-column">
+              <h2 class="h5 card-title">Auraluxe Headphones</h2>
+              <p class="card-text text-secondary">Wireless over-ear comfort with rich bass and 30-hour battery life.</p>
+              <div class="d-flex align-items-center justify-content-between mt-auto">
+                <span class="price">$79.99</span>
+                <span class="rating" aria-label="4.8 stars">★★★★★</span>
+              </div>
+              <button class="btn btn-primary mt-3 add-cart-btn" type="button">Add to Cart</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3">
+          <article class="card product-card h-100 border-0">
+            <span class="badge text-bg-success product-badge">New</span>
+            <img class="card-img-top product-image" alt="Smart watch" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='420' viewBox='0 0 640 420'%3E%3Crect width='640' height='420' fill='%23d7ebf2'/%3E%3Crect x='276' y='54' width='88' height='312' rx='30' fill='%2320354b'/%3E%3Crect x='226' y='124' width='188' height='172' rx='38' fill='%231d1d1f'/%3E%3Crect x='248' y='146' width='144' height='128' rx='24' fill='%2397d8ff'/%3E%3Ccircle cx='320' cy='210' r='36' fill='%23ffffff' opacity='.7'/%3E%3C/svg%3E">
+            <div class="card-body d-flex flex-column">
+              <h2 class="h5 card-title">Pulse Pro Watch</h2>
+              <p class="card-text text-secondary">Track workouts, calls, and sleep with a bright edge-to-edge display.</p>
+              <div class="d-flex align-items-center justify-content-between mt-auto">
+                <span class="price">$129.00</span>
+                <span class="rating" aria-label="4.6 stars">★★★★☆</span>
+              </div>
+              <button class="btn btn-primary mt-3 add-cart-btn" type="button">Add to Cart</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3">
+          <article class="card product-card h-100 border-0">
+            <span class="badge text-bg-warning product-badge">Best Seller</span>
+            <img class="card-img-top product-image" alt="Sneakers" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='420' viewBox='0 0 640 420'%3E%3Crect width='640' height='420' fill='%23f9efcf'/%3E%3Cpath d='M136 264c42 0 84-46 134-46 36 0 58 18 89 38 42 27 81 35 145 35 0 34-23 55-57 55H195c-37 0-59-19-59-56v-26z' fill='%23ff8a3d'/%3E%3Cpath d='M231 239h75l56 41H178c8-20 27-41 53-41z' fill='%23ffffff' opacity='.8'/%3E%3Ccircle cx='229' cy='300' r='17' fill='%23222'/%3E%3Ccircle cx='424' cy='300' r='17' fill='%23222'/%3E%3C/svg%3E">
+            <div class="card-body d-flex flex-column">
+              <h2 class="h5 card-title">Stride Street Sneakers</h2>
+              <p class="card-text text-secondary">Lightweight everyday sneakers with breathable fabric and soft grip.</p>
+              <div class="d-flex align-items-center justify-content-between mt-auto">
+                <span class="price">$59.50</span>
+                <span class="rating" aria-label="4.9 stars">★★★★★</span>
+              </div>
+              <button class="btn btn-primary mt-3 add-cart-btn" type="button">Add to Cart</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3">
+          <article class="card product-card h-100 border-0">
+            <span class="badge text-bg-info product-badge">Popular</span>
+            <img class="card-img-top product-image" alt="Coffee maker" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='420' viewBox='0 0 640 420'%3E%3Crect width='640' height='420' fill='%23dfe7d4'/%3E%3Crect x='228' y='98' width='150' height='182' rx='24' fill='%232b2f36'/%3E%3Crect x='259' y='128' width='88' height='88' rx='18' fill='%23ffffff' opacity='.85'/%3E%3Cpath d='M382 136h46c38 0 68 31 68 69s-30 69-68 69h-46v-30h33c21 0 38-17 38-39s-17-39-38-39h-33v-30z' fill='%23444c56'/%3E%3Crect x='214' y='280' width='196' height='24' rx='12' fill='%2398744a'/%3E%3C/svg%3E">
+            <div class="card-body d-flex flex-column">
+              <h2 class="h5 card-title">BrewMate Coffee Maker</h2>
+              <p class="card-text text-secondary">Compact brewer with quick heat-up and a sleek countertop finish.</p>
+              <div class="d-flex align-items-center justify-content-between mt-auto">
+                <span class="price">$94.25</span>
+                <span class="rating" aria-label="4.4 stars">★★★★☆</span>
+              </div>
+              <button class="btn btn-primary mt-3 add-cart-btn" type="button">Add to Cart</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3">
+          <article class="card product-card h-100 border-0">
+            <span class="badge text-bg-dark product-badge">Limited</span>
+            <img class="card-img-top product-image" alt="Desk lamp" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='420' viewBox='0 0 640 420'%3E%3Crect width='640' height='420' fill='%23efe5fc'/%3E%3Crect x='286' y='268' width='68' height='72' rx='10' fill='%233c315b'/%3E%3Crect x='238' y='332' width='164' height='18' rx='9' fill='%23564a74'/%3E%3Cpath d='M320 114l84 60-33 47-85-61z' fill='%23564a74'/%3E%3Cpath d='M272 108c0-27 21-48 48-48h50c11 0 17 14 10 22l-63 77-37-29v-22z' fill='%23ffd27d'/%3E%3C/svg%3E">
+            <div class="card-body d-flex flex-column">
+              <h2 class="h5 card-title">Halo Desk Lamp</h2>
+              <p class="card-text text-secondary">Warm ambient lighting with adjustable angle and touch controls.</p>
+              <div class="d-flex align-items-center justify-content-between mt-auto">
+                <span class="price">$34.99</span>
+                <span class="rating" aria-label="4.7 stars">★★★★★</span>
+              </div>
+              <button class="btn btn-primary mt-3 add-cart-btn" type="button">Add to Cart</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3">
+          <article class="card product-card h-100 border-0">
+            <span class="badge text-bg-primary product-badge">Editor’s Pick</span>
+            <img class="card-img-top product-image" alt="Backpack" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='420' viewBox='0 0 640 420'%3E%3Crect width='640' height='420' fill='%23d8f0e2'/%3E%3Crect x='230' y='110' width='180' height='212' rx='48' fill='%23245b49'/%3E%3Cpath d='M272 136c0-29 21-52 48-52s48 23 48 52v24h-28v-20c0-12-9-22-20-22s-20 10-20 22v20h-28v-24z' fill='%23193f33'/%3E%3Crect x='270' y='188' width='100' height='78' rx='16' fill='%23ffffff' opacity='.18'/%3E%3C/svg%3E">
+            <div class="card-body d-flex flex-column">
+              <h2 class="h5 card-title">TrailPack Backpack</h2>
+              <p class="card-text text-secondary">Water-resistant carry bag with padded straps and roomy compartments.</p>
+              <div class="d-flex align-items-center justify-content-between mt-auto">
+                <span class="price">$48.75</span>
+                <span class="rating" aria-label="4.5 stars">★★★★☆</span>
+              </div>
+              <button class="btn btn-primary mt-3 add-cart-btn" type="button">Add to Cart</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="cartToast" class="toast align-items-center text-bg-dark border-0" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">Item added to cart</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+</html>
