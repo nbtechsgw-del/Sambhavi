@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Online Examination System</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="authView" class="auth-layout">
+        <div class="brand-panel">
+          <p class="eyebrow">Web Based System</p>
+          <h1>Online Examination System</h1>
+          <p>Manage exams, reduce paperwork, and publish instant results from one focused workspace.</p>
+          <div class="metric-row">
+            <div>
+              <strong>Secure</strong>
+              <span>Role-based access</span>
+            </div>
+            <div>
+              <strong>Fast</strong>
+              <span>Instant scoring</span>
+            </div>
+            <div>
+              <strong>Simple</strong>
+              <span>Admin and student modules</span>
+            </div>
+          </div>
+        </div>
+
+        <form id="loginForm" class="auth-card">
+          <h2>Sign in</h2>
+          <label>
+            Email
+            <input id="emailInput" type="email" placeholder="student@exam.com" required>
+          </label>
+          <label>
+            Password
+            <input id="passwordInput" type="password" placeholder="student123" required>
+          </label>
+          <button type="submit">Login</button>
+          <p id="authMessage" class="message"></p>
+          <div class="demo-accounts">
+            <p><strong>Admin:</strong> admin@exam.com / admin123</p>
+            <p><strong>Student:</strong> student@exam.com / student123</p>
+          </div>
+        </form>
+      </section>
+
+      <section id="dashboardView" class="dashboard hidden">
+        <header class="topbar">
+          <div>
+            <p id="roleLabel" class="eyebrow"></p>
+            <h1 id="welcomeTitle">Dashboard</h1>
+          </div>
+          <button id="logoutButton" class="secondary">Logout</button>
+        </header>
+
+        <nav id="adminTabs" class="tabs hidden" aria-label="Admin views">
+          <button class="tab active" data-tab="adminExams">Exams</button>
+          <button class="tab" data-tab="adminQuestions">Questions</button>
+          <button class="tab" data-tab="adminResults">Results</button>
+        </nav>
+
+        <section id="adminPanel" class="panel-grid hidden">
+          <article id="adminExams" class="panel tab-panel">
+            <h2>Create Exam</h2>
+            <form id="examForm" class="compact-form">
+              <label>
+                Exam title
+                <input id="examTitleInput" type="text" placeholder="Java Fundamentals" required>
+              </label>
+              <label>
+                Time limit in minutes
+                <input id="examDurationInput" type="number" min="1" value="15" required>
+              </label>
+              <button type="submit">Add Exam</button>
+            </form>
+            <div id="examList" class="item-list"></div>
+          </article>
+
+          <article id="adminQuestions" class="panel tab-panel hidden">
+            <h2>Add Question</h2>
+            <form id="questionForm" class="compact-form">
+              <label>
+                Exam
+                <select id="questionExamSelect" required></select>
+              </label>
+              <label>
+                Question
+                <textarea id="questionTextInput" rows="3" required></textarea>
+              </label>
+              <div class="two-col">
+                <label>Option A <input id="optionAInput" type="text" required></label>
+                <label>Option B <input id="optionBInput" type="text" required></label>
+                <label>Option C <input id="optionCInput" type="text" required></label>
+                <label>Option D <input id="optionDInput" type="text" required></label>
+              </div>
+              <label>
+                Correct option
+                <select id="correctOptionInput" required>
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                  <option value="D">D</option>
+                </select>
+              </label>
+              <button type="submit">Save Question</button>
+            </form>
+          </article>
+
+          <article id="adminResults" class="panel tab-panel hidden">
+            <h2>Student Results</h2>
+            <div id="adminResultsList" class="item-list"></div>
+          </article>
+        </section>
+
+        <section id="studentPanel" class="student-space hidden">
+          <article class="panel">
+            <h2>Available Exams</h2>
+            <div id="availableExamList" class="item-list"></div>
+          </article>
+
+          <article id="examAttemptPanel" class="panel hidden">
+            <div class="attempt-header">
+              <div>
+                <p class="eyebrow">Attempt Exam</p>
+                <h2 id="activeExamTitle"></h2>
+              </div>
+              <strong id="timerLabel" class="timer">00:00</strong>
+            </div>
+            <form id="attemptForm" class="question-stack"></form>
+          </article>
+
+          <article class="panel">
+            <h2>My Results</h2>
+            <div id="studentResultsList" class="item-list"></div>
+          </article>
+        </section>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
+
