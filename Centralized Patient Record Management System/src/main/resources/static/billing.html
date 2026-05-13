@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing | CPRMS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="site-header">
+            <a href="/" class="brand-mark">CPRMS</a>
+            <nav class="site-nav">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/patients.html" class="nav-link">Patients</a>
+                <a href="/records.html" class="nav-link">Records</a>
+                <a href="/appointments.html" class="nav-link">Appointments</a>
+                <a href="/billing.html" class="nav-link active">Billing</a>
+                <a href="/reports.html" class="nav-link">Reports</a>
+            </nav>
+        </header>
+
+        <section class="page-intro">
+            <section class="auth-panel card compact-auth">
+                <div class="card-head">
+                    <h2>Session</h2>
+                    <p>Reconnect or switch staff account.</p>
+                </div>
+                <form id="login-form" class="stack">
+                    <label><span>Username</span><input id="username" name="username" type="text" value="admin" required></label>
+                    <label><span>Password</span><input id="password" name="password" type="password" value="admin123" required></label>
+                    <button type="submit" class="primary-btn">Connect</button>
+                </form>
+                <p id="auth-status" class="status-line">Connect the dashboard to load this page.</p>
+                <div class="chips">
+                    <button type="button" class="chip" data-user="admin" data-pass="admin123">Admin</button>
+                    <button type="button" class="chip" data-user="reception" data-pass="reception123">Reception</button>
+                    <button type="button" class="chip" data-user="doctor" data-pass="doctor123">Doctor</button>
+                </div>
+            </section>
+        </section>
+
+        <main class="dashboard-grid">
+            <section class="card span-2">
+                <div class="card-head">
+                    <h2>Generate Bill</h2>
+                    <p>Create medical bills linked to a patient.</p>
+                </div>
+                <form id="bill-form" class="form-grid">
+                    <label><span>Patient ID</span><input name="patientId" type="number" required></label>
+                    <label><span>Description</span><input name="description" required></label>
+                    <label><span>Amount</span><input name="amount" type="number" step="0.01" required></label>
+                    <label><span>Billing Date</span><input name="billingDate" type="date" required></label>
+                    <div class="form-actions">
+                        <button type="submit" class="primary-btn">Generate Bill</button>
+                    </div>
+                </form>
+                <p id="bill-form-status" class="status-line"></p>
+            </section>
+
+            <section class="card span-2">
+                <div class="card-head">
+                    <h2>Payment Tracking</h2>
+                    <p>Refresh bill data and update payment status.</p>
+                </div>
+                <div class="split-actions">
+                    <button id="refresh-bills" class="secondary-btn">Load Bills</button>
+                    <form id="bill-status-form" class="inline-form compact-inline">
+                        <input name="billId" type="number" placeholder="Bill ID" required>
+                        <select name="status">
+                            <option value="PENDING">PENDING</option>
+                            <option value="PAID">PAID</option>
+                            <option value="PARTIAL">PARTIAL</option>
+                        </select>
+                        <button type="submit" class="secondary-btn">Update Payment</button>
+                    </form>
+                </div>
+                <div id="bill-list" class="result-list"></div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="/billing.js"></script>
+</body>
+</html>

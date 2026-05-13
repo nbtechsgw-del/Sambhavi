@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments | CPRMS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="site-header">
+            <a href="/" class="brand-mark">CPRMS</a>
+            <nav class="site-nav">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/patients.html" class="nav-link">Patients</a>
+                <a href="/records.html" class="nav-link">Records</a>
+                <a href="/appointments.html" class="nav-link active">Appointments</a>
+                <a href="/billing.html" class="nav-link">Billing</a>
+                <a href="/reports.html" class="nav-link">Reports</a>
+            </nav>
+        </header>
+
+        <section class="page-intro">
+            <section class="auth-panel card compact-auth">
+                <div class="card-head">
+                    <h2>Session</h2>
+                    <p>Reconnect or switch staff account.</p>
+                </div>
+                <form id="login-form" class="stack">
+                    <label><span>Username</span><input id="username" name="username" type="text" value="admin" required></label>
+                    <label><span>Password</span><input id="password" name="password" type="password" value="admin123" required></label>
+                    <button type="submit" class="primary-btn">Connect</button>
+                </form>
+                <p id="auth-status" class="status-line">Connect the dashboard to load this page.</p>
+                <div class="chips">
+                    <button type="button" class="chip" data-user="admin" data-pass="admin123">Admin</button>
+                    <button type="button" class="chip" data-user="doctor" data-pass="doctor123">Doctor</button>
+                    <button type="button" class="chip" data-user="reception" data-pass="reception123">Reception</button>
+                </div>
+            </section>
+        </section>
+
+        <main class="dashboard-grid">
+            <section class="card span-2">
+                <div class="card-head">
+                    <h2>Schedule Appointment</h2>
+                    <p>Create a new consultation visit for a patient.</p>
+                </div>
+                <form id="appointment-form" class="form-grid">
+                    <label><span>Patient ID</span><input name="patientId" type="number" required></label>
+                    <label><span>Doctor Name</span><input name="doctorName" required></label>
+                    <label><span>Department</span><input name="department" required></label>
+                    <label><span>Date & Time</span><input name="appointmentDateTime" type="datetime-local" required></label>
+                    <label class="full-width"><span>Notes</span><input name="notes"></label>
+                    <div class="form-actions">
+                        <button type="submit" class="primary-btn">Schedule Appointment</button>
+                    </div>
+                </form>
+                <p id="appointment-form-status" class="status-line"></p>
+            </section>
+
+            <section class="card span-2">
+                <div class="card-head">
+                    <h2>Appointment Status</h2>
+                    <p>Refresh the list and update existing appointment states.</p>
+                </div>
+                <div class="split-actions">
+                    <button id="refresh-appointments" class="secondary-btn">Load Appointments</button>
+                    <form id="appointment-status-form" class="inline-form compact-inline">
+                        <input name="appointmentId" type="number" placeholder="Appointment ID" required>
+                        <select name="status">
+                            <option value="SCHEDULED">SCHEDULED</option>
+                            <option value="COMPLETED">COMPLETED</option>
+                            <option value="CANCELLED">CANCELLED</option>
+                        </select>
+                        <button type="submit" class="secondary-btn">Update Status</button>
+                    </form>
+                </div>
+                <div id="appointment-list" class="result-list"></div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="/appointments.js"></script>
+</body>
+</html>
