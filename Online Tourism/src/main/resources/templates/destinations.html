@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav class="navbar">
+    <a class="brand" th:href="@{/}">TourEase</a>
+    <div><a th:href="@{/packages}">Packages</a><a th:href="@{/hotels}">Hotels</a><a th:href="@{/customer/login}">Customer Login</a><a class="btn small" th:href="@{/register}">Register</a></div>
+</nav>
+<main class="container">
+    <section class="section-title mmt-search">
+        <div>
+            <p class="eyebrow">Destination guide</p>
+            <h1>Explore destinations by country, season or theme</h1>
+        </div>
+        <form class="search" th:action="@{/destinations}">
+            <input name="keyword" th:value="${keyword}" placeholder="Search destination, country or type">
+            <button class="btn small">Search</button>
+        </form>
+    </section>
+    <div class="grid">
+        <article class="card" th:each="destination : ${destinations}">
+            <img th:src="${destination.imageUrl}" alt="Destination image">
+            <div class="card-body">
+                <span class="badge" th:text="${destination.type}">Type</span>
+                <h3 th:text="${destination.name}">Destination</h3>
+                <p class="muted" th:text="${destination.country} + ' · Best: ' + ${destination.bestSeason}">Country</p>
+                <p th:text="${destination.description}">Description</p>
+                <a class="btn small" th:href="@{/packages(keyword=${destination.name})}">View Packages</a>
+            </div>
+        </article>
+    </div>
+</main>
+</body>
+</html>

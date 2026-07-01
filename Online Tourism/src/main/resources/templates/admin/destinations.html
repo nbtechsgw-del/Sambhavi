@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Destinations</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav class="navbar"><a class="brand" th:href="@{/admin}">Admin Panel</a><div><a th:href="@{/admin/packages}">Packages</a><a th:href="@{/admin/hotels}">Hotels</a><a th:href="@{/logout}">Logout</a></div></nav>
+<main class="container split">
+    <form class="panel" th:action="@{/admin/destinations}" th:object="${destination}" method="post">
+        <h2>Add/Edit Destination</h2>
+        <input type="hidden" th:field="*{id}">
+        <label>Name</label><input th:field="*{name}" required>
+        <label>Country</label><input th:field="*{country}" required>
+        <label>Type</label><input th:field="*{type}" placeholder="Beach, Heritage, Adventure" required>
+        <label>Best Season</label><input th:field="*{bestSeason}" required>
+        <label>Image URL</label><input th:field="*{imageUrl}">
+        <label>Description</label><textarea th:field="*{description}" required></textarea>
+        <button class="btn full">Save Destination</button>
+    </form>
+    <section class="panel">
+        <h2>Destinations</h2>
+        <div class="alert" th:if="${error}" th:text="${error}"></div>
+        <table>
+            <tr><th>Name</th><th>Country</th><th>Type</th><th>Action</th></tr>
+            <tr th:each="destination : ${destinations}">
+                <td th:text="${destination.name}"></td>
+                <td th:text="${destination.country}"></td>
+                <td th:text="${destination.type}"></td>
+                <td>
+                    <div class="admin-actions">
+                        <a class="btn small" th:href="@{/admin/destinations/edit/{id}(id=${destination.id})}">Edit</a>
+                        <form th:action="@{/admin/destinations/delete/{id}(id=${destination.id})}" method="post">
+                            <button class="btn small danger" type="submit">Delete</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </section>
+</main>
+</body>
+</html>

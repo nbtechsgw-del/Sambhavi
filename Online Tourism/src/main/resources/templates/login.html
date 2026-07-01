@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${loginType} + ' Login'">Login</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="auth-page">
+<form class="auth-card" th:action="${loginAction}" method="post" onsubmit="return validateLogin()">
+    <h1 th:text="${loginType} + ' Login'">Customer Login</h1>
+    <p th:text="'Use your ' + ${#strings.toLowerCase(loginType)} + ' account to continue.'">Use your account to continue.</p>
+    <div class="alert success" th:if="${param.registered}">Registration successful. Please login.</div>
+    <div class="alert" th:if="${error}" th:text="${error}"></div>
+    <label>Email</label>
+    <input id="email" name="email" type="email" placeholder="admin@tourism.com" required>
+    <label>Password</label>
+    <input id="password" name="password" type="password" placeholder="Password" required>
+    <div th:if="${showPersonalCode}">
+        <label>Personal Code</label>
+        <input id="personalCode" name="personalCode" type="password" placeholder="Admin personal code" required>
+    </div>
+    <button class="btn full" type="submit" th:text="${loginType} + ' Login'">Login</button>
+    <p class="auth-switch">
+        <a th:href="@{/customer/login}">Customer login</a>
+        <span>|</span>
+        <a th:href="@{/admin/login}">Admin login</a>
+    </p>
+    <p><a th:href="@{/register}">Create account</a> | <a th:href="@{/}">Home</a></p>
+</form>
+<script th:src="@{/js/app.js}"></script>
+</body>
+</html>

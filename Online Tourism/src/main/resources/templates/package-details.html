@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pkg.title}">Package Details</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav class="navbar">
+    <a class="brand" th:href="@{/}">TourEase</a>
+    <div><a th:href="@{/packages}">Packages</a><a th:href="@{/destinations}">Destinations</a><a th:href="@{/hotels}">Hotels</a><a th:href="@{/customer/login}">Customer Login</a></div>
+</nav>
+
+<header class="detail-hero" th:style="'background-image: linear-gradient(110deg, rgba(15, 23, 42, 0.72), rgba(15, 118, 110, 0.58)), url(' + ${pkg.imageUrl} + ')'">
+    <div>
+        <span class="badge" th:text="${pkg.category}">Domestic</span>
+        <h1 th:text="${pkg.title}">Package Title</h1>
+        <p th:text="${pkg.destination} + ' · ' + ${pkg.durationDays} + ' days · ' + ${pkg.availableSeats} + ' seats left'">Destination</p>
+    </div>
+</header>
+
+<main class="container detail-grid">
+    <section class="panel">
+        <h2>Trip Overview</h2>
+        <p th:text="${pkg.itinerary}">Package itinerary details</p>
+        <div class="feature-row">
+            <span>🏨 Hotel options</span>
+            <span>🚕 Local transfers</span>
+            <span>🧭 Guided sightseeing</span>
+            <span>📄 Digital invoice</span>
+        </div>
+
+        <h2>Suggested Hotels in <span th:text="${pkg.destination}">City</span></h2>
+        <div class="mini-list" th:if="${!hotels.isEmpty()}">
+            <div th:each="hotel : ${hotels}">
+                <strong th:text="${hotel.name}">Hotel</strong>
+                <span th:text="${hotel.rating} + ' ★ · ₹' + ${hotel.startingPrice} + '/night'">Rating</span>
+                <p th:text="${hotel.description}">Description</p>
+            </div>
+        </div>
+        <p class="muted" th:if="${hotels.isEmpty()}">No hotel is linked with this city yet, but you can still book the package.</p>
+    </section>
+
+    <aside class="panel sticky-booking">
+        <p class="muted">Package price per person</p>
+        <h2 th:text="'₹' + ${pkg.price}">₹0</h2>
+        <span class="offer" th:text="${pkg.seasonOffer}">Offer</span>
+        <form th:action="@{/user/book}" method="post" onsubmit="return validateBooking()">
+            <input type="hidden" name="packageId" th:value="${pkg.id}">
+            <label>Travel Date</label>
+            <input id="travelDate" name="travelDate" type="date" required>
+            <label>Travellers</label>
+            <input id="travellers" name="travellers" type="number" min="1" value="1" required>
+            <label>Hotel</label>
+            <select name="hotelId">
+                <option value="">No hotel / decide later</option>
+                <option th:each="hotel : ${hotels}" th:value="${hotel.id}" th:text="${hotel.name} + ' - ₹' + ${hotel.startingPrice} + '/night'"></option>
+            </select>
+            <button class="btn full" th:disabled="${pkg.availableSeats <= 0}" th:text="${pkg.availableSeats <= 0 ? 'Sold Out' : 'Book This Package'}">Book This Package</button>
+            <small class="muted">Login is required before booking confirmation.</small>
+        </form>
+    </aside>
+</main>
+<script th:src="@{/js/app.js}"></script>
+</body>
+</html>

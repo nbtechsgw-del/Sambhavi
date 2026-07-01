@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Packages</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav class="navbar"><a class="brand" th:href="@{/admin}">Admin Panel</a><div><a th:href="@{/admin/destinations}">Destinations</a><a th:href="@{/admin/hotels}">Hotels</a><a th:href="@{/logout}">Logout</a></div></nav>
+<main class="container split">
+    <form class="panel" th:action="@{/admin/packages}" th:object="${packageItem}" method="post">
+        <h2>Add/Edit Package</h2>
+        <input type="hidden" th:field="*{id}">
+        <label>Title</label><input th:field="*{title}" required>
+        <label>Destination</label><input th:field="*{destination}" required>
+        <label>Category</label><select th:field="*{category}"><option>Domestic</option><option>International</option></select>
+        <label>Duration Days</label><input th:field="*{durationDays}" type="number" min="1" required>
+        <label>Price</label><input th:field="*{price}" type="number" step="0.01" required>
+        <label>Available Seats</label><input th:field="*{availableSeats}" type="number" min="0" required>
+        <label>Season Offer</label><input th:field="*{seasonOffer}">
+        <label>Image URL</label><input th:field="*{imageUrl}">
+        <label>Itinerary</label><textarea th:field="*{itinerary}"></textarea>
+        <button class="btn full">Save Package</button>
+    </form>
+    <section class="panel">
+        <h2>Packages</h2>
+        <div class="alert" th:if="${error}" th:text="${error}"></div>
+        <table>
+            <tr><th>Title</th><th>Destination</th><th>Price</th><th>Action</th></tr>
+            <tr th:each="pkg : ${packages}">
+                <td th:text="${pkg.title}"></td>
+                <td th:text="${pkg.destination}"></td>
+                <td th:text="'Rs. ' + ${pkg.price}"></td>
+                <td>
+                    <div class="admin-actions">
+                        <a class="btn small" th:href="@{/admin/packages/edit/{id}(id=${pkg.id})}">Edit</a>
+                        <form th:action="@{/admin/packages/delete/{id}(id=${pkg.id})}" method="post">
+                            <button class="btn small danger" type="submit">Delete</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Payment</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav class="navbar">
+    <a class="brand" th:href="@{/user/dashboard}">TourEase</a>
+    <div><a th:href="@{/user/dashboard}">Dashboard</a><a th:href="@{/logout}">Logout</a></div>
+</nav>
+<main class="container">
+    <section class="panel auth-card wide">
+        <p class="eyebrow">Payment</p>
+        <h1>Complete Payment</h1>
+        <p>Booking #<span th:text="${booking.id}">0</span> - <span th:text="${booking.tourPackage.title}">Package</span></p>
+        <h2 th:text="'Rs. ' + ${booking.totalAmount}">Rs. 0</h2>
+
+        <form th:if="${selectedMethod == null}" class="payment-methods" th:action="@{/user/bookings/{id}/pay(id=${booking.id})}" method="get">
+            <button class="payment-option payment-option-button" type="submit" name="method" value="CARD">
+                <span>
+                    <strong>Card</strong>
+                    <small>Credit or debit card</small>
+                </span>
+            </button>
+            <button class="payment-option payment-option-button" type="submit" name="method" value="UPI">
+                <span>
+                    <strong>UPI</strong>
+                    <small>Pay using UPI ID</small>
+                </span>
+            </button>
+        </form>
+
+        <form th:if="${selectedMethod == 'CARD'}" th:action="@{/user/payments/{id}/otp/send(id=${payment.id})}" method="post">
+            <input type="hidden" name="paymentMethod" value="CARD">
+            <p class="muted">Enter card details to receive an OTP on your registered mobile number.</p>
+            <input name="cardName" type="text" placeholder="Name on card" autocomplete="cc-name" required>
+            <input name="cardNumber" type="text" inputmode="numeric" placeholder="Card number" autocomplete="cc-number" maxlength="23" required>
+            <div class="two-col compact">
+                <input name="cardExpiry" type="text" placeholder="MM/YY" autocomplete="cc-exp" maxlength="5" required>
+                <input name="cardCvv" type="password" inputmode="numeric" placeholder="CVV" autocomplete="cc-csc" maxlength="4" required>
+            </div>
+            <button class="btn full" type="submit">Send OTP</button>
+            <a class="btn ghost full" th:href="@{/user/bookings/{id}/pay(id=${booking.id})}">Change Payment Method</a>
+        </form>
+
+        <form th:if="${selectedMethod == 'UPI'}" th:action="@{/user/payments/{id}/otp/send(id=${payment.id})}" method="post">
+            <input type="hidden" name="paymentMethod" value="UPI">
+            <p class="muted">Enter your UPI ID to receive an OTP on your registered mobile number.</p>
+            <input name="upiId" type="text" placeholder="example@upi" autocomplete="off" required>
+            <button class="btn full" type="submit">Send OTP</button>
+            <a class="btn ghost full" th:href="@{/user/bookings/{id}/pay(id=${booking.id})}">Change Payment Method</a>
+        </form>
+    </section>
+</main>
+</body>
+</html>

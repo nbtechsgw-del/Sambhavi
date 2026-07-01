@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotels</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav class="navbar">
+    <a class="brand" th:href="@{/}">TourEase</a>
+    <div><a th:href="@{/packages}">Packages</a><a th:href="@{/customer/login}">Customer Login</a><a th:href="@{/admin/login}">Admin Login</a></div>
+</nav>
+<main class="container">
+    <section class="section-title mmt-search">
+        <div>
+            <p class="eyebrow">Hotels and stays</p>
+            <h1>Find hotels by city, comfort and price</h1>
+        </div>
+        <form class="search hotel-filter" th:action="@{/hotels}">
+            <input name="keyword" th:value="${keyword}" placeholder="Search city or hotel">
+            <input name="minPrice" th:value="${minPrice}" type="number" min="0" step="100" placeholder="Min price">
+            <input name="maxPrice" th:value="${maxPrice}" type="number" min="0" step="100" placeholder="Max price">
+            <select name="roomType">
+                <option value="">All room types</option>
+                <option th:each="type : ${roomTypes}" th:value="${type}" th:text="${type}" th:selected="${type == roomType}">Deluxe</option>
+            </select>
+            <button class="btn small">Search</button>
+        </form>
+    </section>
+    <div class="hotel-list">
+        <article class="hotel-result-card" th:each="hotel : ${hotels}">
+            <img th:src="${hotel.imageUrl}" alt="Hotel photo">
+            <div class="hotel-result-body">
+                <div>
+                    <span class="rating-pill" th:text="${hotel.rating} + ' star'">5 star</span>
+                    <h3 th:text="${hotel.name}">Hotel</h3>
+                    <p class="muted" th:text="${hotel.city} + ' | ' + ${hotel.roomTypeSummary}">City | Room type</p>
+                    <p th:text="${hotel.description}">Description</p>
+                    <div class="amenities">
+                        <span th:text="${hotel.roomTypeSummary}">Standard Room</span>
+                        <span>Free Wi-Fi</span>
+                        <span>Breakfast</span>
+                        <span>Travel Desk</span>
+                    </div>
+                </div>
+                <div class="price-box">
+                    <span>Per night</span>
+                    <strong th:text="'Rs. ' + ${hotel.startingPrice}">Rs. 0</strong>
+                    <small th:text="${hotel.totalRoomsAvailable} + ' rooms available'">0 rooms</small>
+                    <a class="btn full" th:href="@{/hotels/{id}(id=${hotel.id})}">View Hotel</a>
+                </div>
+            </div>
+        </article>
+    </div>
+</main>
+</body>
+</html>

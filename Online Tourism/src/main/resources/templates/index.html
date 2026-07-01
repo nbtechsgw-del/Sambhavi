@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Tourism Management</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav class="navbar">
+    <a class="brand" th:href="@{/}">TourEase</a>
+    <div>
+        <a th:href="@{/packages}">Packages</a>
+        <a th:href="@{/destinations}">Destinations</a>
+        <a th:href="@{/hotels}">Hotels</a>
+        <a th:href="@{/customer/login}">Customer Login</a>
+        <a th:href="@{/admin/login}">Admin Login</a>
+        <a class="btn small" th:href="@{/register}">Register</a>
+    </div>
+</nav>
+
+<header class="hero">
+    <div>
+        <p class="eyebrow">Travel smarter</p>
+        <h1>Book memorable tours, hotels and experiences online.</h1>
+        <p>Manage destinations, bookings, payments and feedback from one simple Spring Boot tourism system.</p>
+        <a class="btn" th:href="@{/packages}">Explore Packages</a>
+    </div>
+</header>
+
+<main class="container">
+    <section class="section-title">
+        <h2>Popular Tour Packages</h2>
+        <p>Domestic and international plans with pricing, itinerary and offers.</p>
+    </section>
+    <div class="grid">
+        <article class="card" th:each="pkg : ${packages}">
+            <img th:src="${pkg.imageUrl}" alt="Package image">
+            <div class="card-body">
+                <span class="badge" th:text="${pkg.category}">Domestic</span>
+                <h3 th:text="${pkg.title}">Package</h3>
+                <p th:text="${pkg.destination}">Destination</p>
+                <p><strong th:text="'₹' + ${pkg.price}">₹0</strong> · <span th:text="${pkg.durationDays} + ' days'">0 days</span></p>
+                <a class="btn small" th:href="@{/packages/{id}(id=${pkg.id})}">View Details</a>
+            </div>
+        </article>
+    </div>
+
+    <section class="section-title">
+        <h2>Hotel Services</h2>
+        <p>Room availability, pricing, reviews and destination-wise listing.</p>
+    </section>
+    <div class="grid">
+        <article class="card hotel" th:each="hotel : ${hotels}">
+            <div class="card-body">
+                <span class="badge" th:text="${hotel.rating} + ' ★'">5 ★</span>
+                <h3 th:text="${hotel.name}">Hotel</h3>
+                <p th:text="${hotel.city}">City</p>
+                <p><strong th:text="'₹' + ${hotel.startingPrice}">₹0</strong> / night</p>
+            </div>
+        </article>
+    </div>
+</main>
+
+<footer>© 2026 TourEase Online Tourism Management System</footer>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav class="navbar">
+    <a class="brand" th:href="@{/admin}">Admin Panel</a>
+    <div><a th:href="@{/admin/destinations}">Destinations</a><a th:href="@{/admin/packages}">Packages</a><a th:href="@{/admin/hotels}">Hotels</a><a th:href="@{/logout}">Logout</a></div>
+</nav>
+<main class="container">
+    <div class="stats">
+        <div><strong th:text="${users}">0</strong><span>Users</span></div>
+        <div><strong th:text="${destinations}">0</strong><span>Destinations</span></div>
+        <div><strong th:text="${packages}">0</strong><span>Packages</span></div>
+        <div><strong th:text="${hotels}">0</strong><span>Hotels</span></div>
+        <div><strong th:text="${bookings}">0</strong><span>Bookings</span></div>
+    </div>
+
+    <section class="panel">
+        <h2>Booking Reports</h2>
+        <table>
+            <tr><th>ID</th><th>User</th><th>Package</th><th>Amount</th><th>Status</th><th>Action</th></tr>
+            <tr th:each="booking : ${bookingList}">
+                <td th:text="${booking.id}"></td>
+                <td th:text="${booking.user.name}"></td>
+                <td th:text="${booking.tourPackage.title}"></td>
+                <td th:text="'₹' + ${booking.totalAmount}"></td>
+                <td><span class="badge" th:text="${booking.status}"></span></td>
+                <td>
+                    <a th:href="@{/admin/bookings/{id}/approve(id=${booking.id})}">Approve</a>
+                    <a th:href="@{/admin/bookings/{id}/cancel(id=${booking.id})}">Cancel</a>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="panel">
+        <h2>Payment Records</h2>
+        <table>
+            <tr><th>Transaction</th><th>Booking</th><th>Amount</th><th>Status</th><th>Date</th><th>Action</th></tr>
+            <tr th:each="payment : ${payments}">
+                <td th:text="${payment.transactionId}"></td>
+                <td th:text="${payment.booking.id}"></td>
+                <td th:text="'₹' + ${payment.amount}"></td>
+                <td>
+                    <span th:if="${payment.status.name() == 'REFUNDED' || payment.refundId != null}" class="badge">REFUNDED</span>
+                    <span th:if="${payment.status.name() != 'REFUNDED' && payment.refundId == null}" th:text="${payment.status}"></span>
+                </td>
+                <td th:text="${payment.paidAt}"></td>
+                <td>
+                    <a th:if="${payment.status.name() == 'SUCCESS'}" th:href="@{/admin/payments/{id}/refund(id=${payment.id})}">Refund</a>
+                    <span th:if="${payment.status.name() == 'REFUNDED' || payment.refundId != null}" class="badge">Refund successful</span>
+                    <span th:if="${payment.status.name() != 'SUCCESS' && payment.status.name() != 'REFUNDED' && payment.refundId == null}">-</span>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="panel">
+        <h2>Customer Feedback</h2>
+        <div class="feedback" th:each="item : ${feedback}">
+            <strong th:text="${item.subject}"></strong>
+            <span th:text="${item.rating} + '/5'"></span>
+            <p th:text="${item.message}"></p>
+        </div>
+    </section>
+</main>
+</body>
+</html>

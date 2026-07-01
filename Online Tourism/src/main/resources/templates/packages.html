@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packages</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav class="navbar">
+    <a class="brand" th:href="@{/}">TourEase</a>
+    <div><a th:href="@{/destinations}">Destinations</a><a th:href="@{/hotels}">Hotels</a><a th:href="@{/customer/login}">Customer Login</a><a class="btn small" th:href="@{/register}">Register</a></div>
+</nav>
+<main class="container">
+    <section class="section-title mmt-search">
+        <div>
+            <p class="eyebrow">Holiday packages</p>
+            <h1>Search trips by city, destination or theme</h1>
+        </div>
+        <form class="search" th:action="@{/packages}">
+            <input name="keyword" th:value="${keyword}" placeholder="Search destination or package">
+            <button class="btn small">Search</button>
+        </form>
+    </section>
+    <div class="package-list">
+        <article class="trip-card" th:each="pkg : ${packages}">
+            <img th:src="${pkg.imageUrl}" alt="Package image">
+            <div class="trip-content">
+                <div>
+                    <span class="badge" th:text="${pkg.category}">Domestic</span>
+                    <h3 th:text="${pkg.title}">Package</h3>
+                    <p class="muted" th:text="${pkg.destination} + ' · ' + ${pkg.durationDays} + ' days'">Destination</p>
+                    <p th:text="${pkg.itinerary}">Itinerary</p>
+                    <span class="offer" th:text="${pkg.seasonOffer}">Offer</span>
+                </div>
+                <div class="price-box">
+                    <span>Starting from</span>
+                    <strong th:text="'₹' + ${pkg.price}">₹0</strong>
+                    <small th:text="${pkg.availableSeats} + ' seats available'">0 seats</small>
+                    <a class="btn full" th:href="@{/packages/{id}(id=${pkg.id})}">View Details</a>
+                </div>
+            </div>
+        </article>
+    </div>
+</main>
+</body>
+</html>

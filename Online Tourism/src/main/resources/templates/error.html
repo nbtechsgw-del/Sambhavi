@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav class="navbar">
+    <a class="brand" th:href="@{/}">Online Tourism</a>
+    <div><a th:href="@{/admin}">Admin</a><a th:href="@{/}">Home</a></div>
+</nav>
+<main class="container">
+    <section class="panel">
+        <h1>Something went wrong</h1>
+        <div class="alert">
+            <p th:text="'Status: ' + ${status}">Status: 500</p>
+            <p th:if="${path}" th:text="'Path: ' + ${path}"></p>
+            <p th:if="${message}" th:text="${message}"></p>
+        </div>
+        <p class="muted">Go back and try again after restarting the application.</p>
+        <a class="btn small" th:href="@{/admin}">Back to Admin</a>
+    </section>
+</main>
+</body>
+</html>

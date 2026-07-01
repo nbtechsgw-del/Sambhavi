@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Payment OTP</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav class="navbar">
+    <a class="brand" th:href="@{/user/dashboard}">TourEase</a>
+    <div><a th:href="@{/user/dashboard}">Dashboard</a><a th:href="@{/logout}">Logout</a></div>
+</nav>
+<main class="container">
+    <section class="panel auth-card">
+        <p class="eyebrow">OTP approval</p>
+        <h1>Verify Payment</h1>
+        <p>OTP sent to <span th:text="${maskedPhone}">your mobile</span>.</p>
+        <p class="muted">Demo OTP: <strong th:text="${demoOtp}">000000</strong></p>
+        <p class="error" th:if="${param.error != null}">Invalid OTP. Please try again.</p>
+
+        <form th:action="@{/user/payments/{id}/success(id=${payment.id})}" method="post">
+            <input name="otp" type="text" inputmode="numeric" placeholder="Enter 6-digit OTP" maxlength="6" required>
+            <button class="btn full" type="submit">Approve Payment</button>
+        </form>
+    </section>
+</main>
+</body>
+</html>
