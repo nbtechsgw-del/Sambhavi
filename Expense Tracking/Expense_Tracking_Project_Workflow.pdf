@@ -1,0 +1,377 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+2 0 obj
+<< /Length 1063 >>
+stream
+BT
+/F1 11 Tf
+50 780 Td
+14 TL
+/F1 18 Tf
+(Expense Tracking Application - Project Workflow) Tj
+/F1 11 Tf
+T*
+T*
+/F1 13 Tf
+(Project Overview) Tj
+/F1 11 Tf
+T*
+(The Expense Tracking Application is a full-stack web application built with React.js) Tj
+T*
+(and Java Spring Boot. It allows users to register, log in, manage income and) Tj
+T*
+(expenses, organize transactions by category, view dashboard summaries, filter) Tj
+T*
+(records, and generate reports.) Tj
+T*
+T*
+/F1 13 Tf
+(High-Level Architecture Workflow) Tj
+/F1 11 Tf
+T*
+(User) Tj
+T*
+(  -> React Frontend) Tj
+T*
+(  -> Spring Boot REST API) Tj
+T*
+(  -> Service Layer) Tj
+T*
+(  -> Repository Layer) Tj
+T*
+(  -> H2 Database) Tj
+T*
+T*
+/F1 13 Tf
+(Response Flow) Tj
+/F1 11 Tf
+T*
+(H2 Database -> Repository -> Service -> REST Controller -> React UI -> User) Tj
+T*
+T*
+/F1 13 Tf
+(Main Modules) Tj
+/F1 11 Tf
+T*
+(- Authentication) Tj
+T*
+(- Dashboard) Tj
+T*
+(- Income and Expense Management) Tj
+T*
+(- Category Management) Tj
+T*
+(- Search and Filters) Tj
+T*
+(- Reports and Analytics) Tj
+T*
+(- CSV Export and Dark Mode) Tj
+T*
+ET
+endstream
+endobj
+3 0 obj
+<< /Type /Page /Parent 12 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 2 0 R >>
+endobj
+4 0 obj
+<< /Length 1222 >>
+stream
+BT
+/F1 11 Tf
+50 780 Td
+14 TL
+/F1 18 Tf
+(Authentication and Dashboard Workflow) Tj
+/F1 11 Tf
+T*
+T*
+/F1 13 Tf
+(Authentication Workflow) Tj
+/F1 11 Tf
+T*
+(1. User opens the React application.) Tj
+T*
+(2. User chooses Login or Register.) Tj
+T*
+(3. React sends credentials to the Spring Boot authentication API.) Tj
+T*
+(4. Backend validates registration fields or checks login password.) Tj
+T*
+(5. Backend returns an authentication token and user details.) Tj
+T*
+(6. React stores the session in browser local storage.) Tj
+T*
+(7. Protected API calls include the token in the X-Auth-Token header.) Tj
+T*
+(8. User can log out, which clears the token.) Tj
+T*
+T*
+/F1 13 Tf
+(Dashboard Workflow) Tj
+/F1 11 Tf
+T*
+(1. User logs in successfully.) Tj
+T*
+(2. React calls the dashboard API.) Tj
+T*
+(3. Backend loads the user's transactions.) Tj
+T*
+(4. Service layer calculates total income, expenses, balance, monthly income,) Tj
+T*
+(   monthly expenses, and recent transactions.) Tj
+T*
+(5. React displays summary cards, recent transactions, and charts.) Tj
+T*
+T*
+/F1 13 Tf
+(Dashboard Outputs) Tj
+/F1 11 Tf
+T*
+(- Total Income) Tj
+T*
+(- Total Expenses) Tj
+T*
+(- Current Balance) Tj
+T*
+(- Monthly Summary) Tj
+T*
+(- Recent Transactions) Tj
+T*
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 12 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Length 1173 >>
+stream
+BT
+/F1 11 Tf
+50 780 Td
+14 TL
+/F1 18 Tf
+(Category and Transaction Workflow) Tj
+/F1 11 Tf
+T*
+T*
+/F1 13 Tf
+(Category Management Workflow) Tj
+/F1 11 Tf
+T*
+(1. User opens the Categories page.) Tj
+T*
+(2. React fetches all categories for the logged-in user.) Tj
+T*
+(3. User creates, edits, or deletes a category.) Tj
+T*
+(4. Backend validates category name and category type.) Tj
+T*
+(5. Backend saves changes through JPA repositories.) Tj
+T*
+(6. React refreshes the category list.) Tj
+T*
+(7. Categories used by transactions are protected from deletion.) Tj
+T*
+T*
+/F1 13 Tf
+(Transaction Management Workflow) Tj
+/F1 11 Tf
+T*
+(1. User opens the Transactions page.) Tj
+T*
+(2. React fetches categories and transaction records.) Tj
+T*
+(3. User adds income or expense with amount, category, date, description,) Tj
+T*
+(   and recurring flag.) Tj
+T*
+(4. Backend validates amount, date, category ownership, and category type.) Tj
+T*
+(5. Backend stores the transaction in the database.) Tj
+T*
+(6. User can edit or delete existing transactions.) Tj
+T*
+(7. Dashboard and reports update after changes.) Tj
+T*
+T*
+/F1 13 Tf
+(Transaction Types) Tj
+/F1 11 Tf
+T*
+(- INCOME) Tj
+T*
+(- EXPENSE) Tj
+T*
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 12 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 1057 >>
+stream
+BT
+/F1 11 Tf
+50 780 Td
+14 TL
+/F1 18 Tf
+(Search, Filter, Reports, and Analytics Workflow) Tj
+/F1 11 Tf
+T*
+T*
+/F1 13 Tf
+(Search and Filter Workflow) Tj
+/F1 11 Tf
+T*
+(1. User enters a search term or selects filters.) Tj
+T*
+(2. Filters can include date range, category, and transaction type.) Tj
+T*
+(3. React sends query parameters to the transactions API.) Tj
+T*
+(4. Backend applies filters in the repository query.) Tj
+T*
+(5. React displays the matching transactions.) Tj
+T*
+T*
+/F1 13 Tf
+(Reports and Analytics Workflow) Tj
+/F1 11 Tf
+T*
+(1. User opens the Reports page.) Tj
+T*
+(2. User selects a date range.) Tj
+T*
+(3. React calls the reports API.) Tj
+T*
+(4. Backend groups transaction data into monthly expenses, category-wise) Tj
+T*
+(   expenses, and income vs expense totals.) Tj
+T*
+(5. React renders pie and bar charts.) Tj
+T*
+(6. User can export report data to CSV.) Tj
+T*
+T*
+/F1 13 Tf
+(Report Types) Tj
+/F1 11 Tf
+T*
+(- Monthly Expense Report) Tj
+T*
+(- Category-wise Expense Report) Tj
+T*
+(- Income vs Expense Report) Tj
+T*
+(- Date Range Report) Tj
+T*
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 12 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 1296 >>
+stream
+BT
+/F1 11 Tf
+50 780 Td
+14 TL
+/F1 18 Tf
+(Database and Deployment Workflow) Tj
+/F1 11 Tf
+T*
+T*
+/F1 13 Tf
+(Database Tables) Tj
+/F1 11 Tf
+T*
+(Users: stores user profile, email, password hash, and created date.) Tj
+T*
+(Categories: stores user-specific income and expense categories.) Tj
+T*
+(Transactions: stores category relationship, amount, type, date, description,) Tj
+T*
+(and recurring status.) Tj
+T*
+T*
+/F1 13 Tf
+(Relationships) Tj
+/F1 11 Tf
+T*
+(- One user has many categories.) Tj
+T*
+(- One user has many transactions.) Tj
+T*
+(- One category has many transactions.) Tj
+T*
+T*
+/F1 13 Tf
+(Local Run Workflow) Tj
+/F1 11 Tf
+T*
+(1. Start backend with: mvn spring-boot:run) Tj
+T*
+(2. Backend runs at: http://localhost:8080) Tj
+T*
+(3. Start frontend with: npm run dev) Tj
+T*
+(4. Frontend runs at: http://localhost:5173) Tj
+T*
+(5. Login using demo credentials or create a new account.) Tj
+T*
+T*
+/F1 13 Tf
+(Deployment Workflow) Tj
+/F1 11 Tf
+T*
+(1. Build backend using: mvn clean package) Tj
+T*
+(2. Build frontend using: npm run build) Tj
+T*
+(3. Host backend JAR on a server with Java installed.) Tj
+T*
+(4. Host frontend dist folder on a static server.) Tj
+T*
+(5. Configure frontend API URL for the deployed backend.) Tj
+T*
+(6. Replace H2 with MySQL, PostgreSQL, or SQL Server for production use.) Tj
+T*
+ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 12 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 1 0 R >> >> /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Type /Pages /Kids [ 3 0 R 5 0 R 7 0 R 9 0 R 11 0 R ] /Count 5 >>
+endobj
+13 0 obj
+<< /Type /Catalog /Pages 12 0 R >>
+endobj
+xref
+0 14
+0000000000 65535 f 
+0000000009 00000 n 
+0000000079 00000 n 
+0000001194 00000 n 
+0000001321 00000 n 
+0000002595 00000 n 
+0000002722 00000 n 
+0000003947 00000 n 
+0000004074 00000 n 
+0000005183 00000 n 
+0000005310 00000 n 
+0000006659 00000 n 
+0000006788 00000 n 
+0000006873 00000 n 
+trailer
+<< /Size 14 /Root 13 0 R >>
+startxref
+6924
+%%EOF
